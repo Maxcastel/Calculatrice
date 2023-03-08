@@ -1,19 +1,22 @@
-/*const chiffre1 = document.getElementById('chiffre-1');
-const chiffre2 = document.getElementById('chiffre-2');
-const chiffre3 = document.getElementById('chiffre-3');
-const chiffre4 = document.getElementById('chiffre-4');
-const chiffre5 = document.getElementById('chiffre-5');
-const chiffre6 = document.getElementById('chiffre-6');
-const chiffre7 = document.getElementById('chiffre-7');
-const chiffre8 = document.getElementById('chiffre-8');
-const chiffre9 = document.getElementById('chiffre-9');*/
 const buttons = document.getElementById('buttons');
 const input = document.getElementById('input');
 
 let operandeGauche = '';
 let operandeDroite = '';
 let operateur = '';
-let Virgule = false;
+let virgule = false;
+
+//let RegexCommenceParChiffre = new RegExp('^[0-9]');
+
+//let ValeurInput = input.value;
+
+/*let valinput = input.value = '5';
+
+//if (valinput.match(CommenceParChiffre))
+if (RegexCommenceParChiffre.test(valinput)){
+  console.log("l'input commence par un chiffre");
+}*/
+
 
 //const buttons = document.getElementsByTagName('button');
 
@@ -34,25 +37,31 @@ buttons.addEventListener('click', (e) => {
     switch(typeOfButton(valueOfButton)){
 
         case 'number' :
-          console.log(addNumber(valueOfButton));
+          addValue(valueOfButton);
+          console.log('number');
           break;
 
         case 'operateur' :
+          getOperandeGauche();
+          getOperateur(valueOfButton)
           console.log('operateur');
           break;
 
         case 'virgule' :
+          ecrireVirgule(valueOfButton);
           console.log('virgule');
           break;
 
         case 'reset' :
+          resetValue();
           console.log('reset');
           break;
 
         case 'total' :
+          getOperandeDroite();
+          afficherResultat();
           console.log('total');
           break;
-
       }
   }
   
@@ -63,6 +72,75 @@ buttons.addEventListener('click', (e) => {
   }*/
 
 })
+
+function addValue(valeurBouton){
+
+  if (input.value === '0'){
+    input.value = valeurBouton;
+  }
+  else{
+    input.value += valeurBouton;
+  }
+}
+
+function resetValue(){
+
+  input.value = '0';
+}
+
+function ecrireVirgule(valeurBouton){
+
+  if (input.value.includes(valeurBouton)){
+    virgule = true;
+  }
+  else{
+    virgule = false;
+    input.value += valeurBouton;
+  }
+}
+
+function afficherResultat(){
+
+  /*console.log(operandeGauche);
+  console.log(operandeDroite);
+
+  console.log(valeurOperateur);*/
+
+  let resultat;
+
+  if (operateur === '+'){
+    resultat = operandeGauche + operandeDroite;
+  }
+  else if (operateur === '-'){
+    resultat = operandeGauche - operandeDroite;
+  }
+  else if (operateur === '/'){
+    resultat = operandeGauche / operandeDroite;
+  }
+
+  input.value = resultat;
+}
+
+function getOperandeGauche(){
+
+  operandeGauche = parseInt(input.value);
+  input.value = '0';
+
+  console.log(operandeGauche);
+}
+
+function getOperandeDroite(){
+
+  operandeDroite = parseInt(input.value);
+  input.value = '0';
+
+  console.log(operandeDroite);
+}
+
+function getOperateur(valeurOperateur){
+
+  operateur = valeurOperateur;
+}
 
 function typeOfButton(button) {
 
@@ -89,11 +167,6 @@ function typeOfButton(button) {
     return "erreur";
   }
 
-}
-
-function addNumber(valeurBouton){
-
-  input.value = valeurBouton;
 }
 
 /*const buttons = Array.from(document.getElementsByTagName('button'));
