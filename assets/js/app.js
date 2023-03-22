@@ -6,33 +6,11 @@ let operandeDroite = '';
 let operateur = '';
 let virgule = false;
 
-//let RegexCommenceParChiffre = new RegExp('^[0-9]');
-
-//let ValeurInput = input.value;
-
-/*let valinput = input.value = '5';
-
-//if (valinput.match(CommenceParChiffre))
-if (RegexCommenceParChiffre.test(valinput)){
-  console.log("l'input commence par un chiffre");
-}*/
-
-
-//const buttons = document.getElementsByTagName('button');
-
-//console.log(Array.from(buttons));
-
 buttons.addEventListener('click', (e) => {
-
-  //console.log(e);
-  //console.log(e.target.nodeName);
-  //e.target.nodeName ou e.target.tagName
 
   if(e.target.nodeName === 'BUTTON'){
 
     let valueOfButton = e.target.textContent;
-
-    //addNumber(valueOfButton);
 
     switch(typeOfButton(valueOfButton)){
 
@@ -66,11 +44,6 @@ buttons.addEventListener('click', (e) => {
   }
   
 
-  /*if(e.target.nodeName === 'BUTTON')
-  {
-      console.log(e.target.textContent);
-  }*/
-
 })
 
 function addValue(valeurBouton){
@@ -100,11 +73,6 @@ function ecrireVirgule(valeurBouton){
 }
 
 function afficherResultat(){
-
-  /*console.log(operandeGauche);
-  console.log(operandeDroite);
-
-  console.log(valeurOperateur);*/
 
   let resultat;
 
@@ -168,54 +136,3 @@ function typeOfButton(button) {
   }
 
 }
-
-/*const buttons = Array.from(document.getElementsByTagName('button'));
-
-console.log(buttons);
-
-buttons.forEach(elt => {
-
-  elt.addEventListener('click', e => {
-    console.log(e.target.textContent)
-  })
-})*/
-
-
-
-
-/*const boutons = document.querySelectorAll("button");
-
-//console.log(boutons);
-
-console.log(boutons[4].textContent);
-
-function afficherChiffre() {
-
-    for (var i=0; i<boutons.length; i++) {
-       
-        var bouton = boutons[i];
-    }
-    
-    console.log(bouton.textContent);
-}
-
-boutons.addEventListener("click", afficherChiffre);*/
-
-/*chiffre2.addEventListener('click', function() {
-    console.log(chiffre2.textContent);
-});*/
-  
-
-
-
-
-/*chiffre2.addEventListener('click', () => {
-  // du code 
-})
-
-//ET si j'ai besoin de l'event (e) :
-
-chiffre2.addEventListener('click', (e) => {
-  // du code 
-  console.log(e)
-})*/
